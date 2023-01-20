@@ -21,10 +21,19 @@ def estudiantes(request):
     })
 
 def profesores(request):
-    return render(request, 'profesores.html') 
+    profesores = Profesores.objects.all()
+    return render(request, 'profesores.html',{
+        'profesores':profesores
+    }) 
 
 def cursos(request):
-    return render(request, 'cursos.html')
+    cursos = Cursos.objects.all()
+    return render(request, 'cursos.html',{
+        'cursos':cursos
+    })
 
 def tareas(request):
-    return render(request, 'tareas.html')
+    tareas = Tareas.objects.all()
+    return render(request, 'tareas.html',{
+        'tareas':tareas
+    })
