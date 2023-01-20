@@ -14,10 +14,16 @@ def home(request):
     return HttpResponse(document)
 
 def estudiantes(request):
-    return render(request, 'estudiantes.html')
+    estudiantes = ("Caleb","Santiago","Salazar","Chiquiza")
+    return render(request, 'estudiantes.html',{
+        'estudiantes':estudiantes
+    })
 
 def profesores(request):
     return render(request, 'profesores.html') 
 
 def cursos(request):
     return render(request, 'cursos.html')
+
+def tareas(request):
+    return render(request, 'tareas.html')

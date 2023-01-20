@@ -1,3 +1,5 @@
+{% extends 'base.html'%}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,16 @@
     <title>Estudiantes</title>
 </head>
 <body>
-    Estudiantes
+    <section>
+        <div>
+            <h1>Estudiantes: </h1>
+            <ul>
+                {% for estudiante in estudiantes %}
+                <li>{{estudiante}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
 </body>
 </html>
+{% endblock %}
