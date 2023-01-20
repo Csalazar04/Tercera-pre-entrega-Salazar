@@ -9,16 +9,14 @@
     <title>Profesores</title>
 </head>
 <body>
-    <section>
-        <div>
-            <h1>Profesores: </h1>
-            <ul>
-                {% for profesor in profesores %}
-                <li>{{profesor.nombre}} {{profesor.apellido}}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </section>
+    <div>
+        <h1>Profesores: </h1>
+        <ul>
+            {% for profesor in profesores %}
+            <li>{{profesor.nombre}} {{profesor.apellido}}</li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
 {% endblock %}

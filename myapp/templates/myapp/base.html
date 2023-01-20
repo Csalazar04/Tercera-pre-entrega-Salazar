@@ -9,10 +9,12 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>DB</title>
+        <link rel="shortcut icon" href="{% static 'assets/favicon.ico' %}">
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
     </head>
 
@@ -22,15 +24,17 @@
             <div class="container">
                 <a class="navbar-brand" href="{% url 'estudiantes' %}">Estudiantes</a>
                 <a class="navbar-brand" href="{% url 'profesores' %}">Profesores</a>
-                <a class="navbar-brand" href="{% url 'cursos' %}">Cursos</a>
+                <a class="navbar-brand" href="{% url 'carreras' %}">Carreras</a>
                 {# <a class="navbar-brand" href="{% url 'tareas' %}">Tareas</a> #}
                 <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-                {# <a class="btn btn-primary" href="#signup">INICIAR</a> #}
+                <a class="btn btn-primary" href="#signup">REGISTRO</a>
             </div>
         </nav>
-
-        {% block content %}
-        {% endblock %}
+        <section style="padding: 80px 40px;">
+            {% block content %}
+            {% endblock %}
+        </section>
+        
 
         <!-- Footer-->
         <footer class="footer bg-light">
@@ -48,14 +52,15 @@
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                                <a target="_blank" href="https://www.instagram.com/calebsantiago04/"><i class="bi-instagram fs-3"></i></a>
                             </li>
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                                <a target="_blank" href="#!"><i class="bi-whatsapp fs-3"></i></a>
                             </li>
-                            <li class="list-inline-item">
-                                <a href="https://www.instagram.com/espndeportes/?hl=es"><i class="bi-instagram fs-3"></i></a>
+                            <li class="list-inline-item me-4">
+                                <a target="_blank" href="https://github.com/Csalazar04"<i class="bi-github fs-3"></i></a>
                             </li>
+                            
                         </ul>
                     </div>
                 </div>

@@ -9,6 +9,9 @@ class Estudiantes(models.Model):
     dni = models.CharField(max_length=60)
     email = models.EmailField(max_length=100)
 
+    def __str__(self):
+        return f"{self.nombre} {self.apellido}"
+
 class Profesores(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
@@ -17,11 +20,20 @@ class Profesores(models.Model):
     email = models.EmailField(max_length=100)
     profesion = models.CharField(max_length=40)
 
-class Cursos(models.Model):
+    def __str__(self):
+        return f"{self.nombre} {self.apellido}"
+
+class Carreras(models.Model):
     nombre = models.CharField(max_length=100)
-    comision = models.CharField(max_length=100)
+    cantSemestres = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.nombre}, {self.cantSemestres}"
 
 class Tareas(models.Model):
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField()
     done = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.titulo}"

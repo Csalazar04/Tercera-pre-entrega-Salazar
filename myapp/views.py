@@ -26,10 +26,10 @@ def profesores(request):
         'profesores':profesores
     }) 
 
-def cursos(request):
-    cursos = Cursos.objects.all()
-    return render(request, 'cursos.html',{
-        'cursos':cursos
+def carreras(request):
+    carreras = Carreras.objects.all()
+    return render(request, 'carreras.html',{
+        'carreras':carreras
     })
 
 def tareas(request):

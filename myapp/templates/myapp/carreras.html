@@ -6,17 +6,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudiantes</title>
+    <title>Carreras</title>
 </head>
 <body>
     <div>
-        <h1>Estudiantes: </h1>
+        <h1>Carreras: </h1>
         <ul>
-            {% for estudiante in estudiantes %}
-            <li>{{estudiante.nombre}} {{estudiante.apellido}}</li>
+            {% for carrera in carreras %}
+            <li>{{curso}}</li>
+            <a class="navbar-brand" href="{% url 'tareas' %}">Tareas del curso {{curso.nombre}}</a>
             {% endfor %}
         </ul>
-    </div>
     </section>
 </body>
 </html>
