@@ -14,7 +14,7 @@
             <h1>Estudiantes: </h1>
             <ul>
                 {% for estudiante in estudiantes %}
-                <li>{{estudiante}}</li>
+                <li>{{estudiante.nombre}} {{estudiante.apellido}}</li>
                 {% endfor %}
             </ul>
         </div>
