@@ -13,7 +13,7 @@
         <h1>Profesores: </h1>
         <ul>
             {% for profesor in profesores %}
-            <li>{{profesor.nombre}} {{profesor.apellido}}</li>
+            <li><h6>{{profesor.nombre}} {{profesor.apellido}}</h6></li>
             {% endfor %}
             <hr>
             <p><a href="{% url 'busqueda_profesores' %}" class="navbar-brand">Buscar Profesores</a></p>

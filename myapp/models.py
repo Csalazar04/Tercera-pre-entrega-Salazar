@@ -34,6 +34,7 @@ class Tareas(models.Model):
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField()
     done = models.BooleanField(default=False)
+    carreras = models.ForeignKey(Carreras, related_name='Carreras', null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.titulo}"
+        return f"{self.carreras.nombre}: {self.titulo}"

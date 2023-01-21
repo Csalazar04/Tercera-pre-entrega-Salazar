@@ -13,8 +13,8 @@
     <form action="{% url 'busqueda_tareas' %}" method="post">
         {% csrf_token %}
         <p>Titulo de la tarea:</p>
-        <input type="text" name="nombre">
-        <input type="submit" value="Enviar">
+        <input type="text" name="titulo">
+        <input type="submit" value="Buscar">
       </form>
 </body>
 </html>

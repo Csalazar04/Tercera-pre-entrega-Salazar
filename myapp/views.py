@@ -5,7 +5,7 @@ from django.template import Template, Context, loader
 from datetime import datetime
 from .models import *
 from .forms import *
-
+from django.db.models import Q
 # Create your views here.
 
 def home(request):
@@ -44,11 +44,7 @@ def busqueda_estudiantes(request):
         contexto = {
             'estudiantes': estudiantes
         }
-        return render(
-            request=request,
-            template_name='myapp/estudiantes.html',
-            context=contexto,
-        )
+        return render( request,'myapp/estudiantes.html',contexto,)
     else:  
         return render(
             request=request,
@@ -157,7 +153,7 @@ def formulario_tareas(request):
 def busqueda_tareas(request):
     if request.method == "POST":
         data = request.POST
-        tareas = Tareas.objects.filter(titulo__contains = data['nombre'])
+        tareas = Tareas.objects.filter(titulo__contains = data['titulo'])
         contexto = {
             'tareas': tareas
         }
