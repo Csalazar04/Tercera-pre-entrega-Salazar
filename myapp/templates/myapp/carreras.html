@@ -10,16 +10,19 @@
 </head>
 <body>
     <div>
-        <h1>Carreras: </h1>
+        <h1>¡¡Nuestras Carreras!!</h1>
+        
         <ul>
             {% for carrera in carreras %}
-            <li><h3>{{carrera.nombre}}</h3></li>
+            <li><h6>{{carrera.nombre}}, {{carrera.semestres}} semestres</h6></li>
             
             {% endfor %}
-            <a class="navbar-brand" href="{% url 'tareas' %}">Tareas</a>
+            <hr>
+            <p><a href="{% url 'busqueda_carreras' %}" class="navbar-brand">Buscar Carreras</a></p>
+            <a class="navbar-brand" href="{% url 'formulario_carreras' %}">Añadir Carreras</a>
         </ul>
     </div>
-    {# {% include 'tareas.html' %} #}
+
 </body>
 </html>
 {% endblock %}

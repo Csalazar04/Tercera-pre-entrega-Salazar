@@ -25,10 +25,10 @@ class Profesores(models.Model):
 
 class Carreras(models.Model):
     nombre = models.CharField(max_length=100)
-    cantSemestres = models.IntegerField()
+    semestres = models.IntegerField()
 
     def __str__(self):
-        return f"{self.nombre}, {self.cantSemestres}"
+        return f"{self.nombre}, {self.semestres}"
 
 class Tareas(models.Model):
     titulo = models.CharField(max_length=100)

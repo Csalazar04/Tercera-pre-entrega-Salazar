@@ -13,9 +13,13 @@
         <h1>Estudiantes: </h1>
         <ul>
             {% for estudiante in estudiantes %}
-            <li>{{estudiante.nombre}} {{estudiante.apellido}}</li>
+            <li><h6>{{estudiante.nombre}} {{estudiante.apellido}}</h6></li>
             {% endfor %}
+            <hr>
+            <p><a href="{% url 'busqueda_estudiantes' %}" class="navbar-brand">Buscar Estudiantes</a></p>
+            <a class="navbar-brand" href="{% url 'formulario_estudiantes' %}">Añadir Estudiantes</a>
         </ul>
+        
     </div>
     </section>
 </body>

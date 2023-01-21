@@ -13,11 +13,31 @@
         <h1>Tareas: </h1>
         <ul>
             {% for tarea in tareas %}
-            <li>{{tarea}}</li>
+            <div>
+                <h1>{% if tarea.done == False %} 
+                    🕑 
+                    {% else %} 
+                    ✅ 
+                    {% endif %} 
+                    {{tarea.titulo}}
+                </h1>
+        
+                {% if tarea.done == True %}
+                <p>Estado : <span style="color: green;">Realizada</span></p>
+                {% else %}
+                <p>Estado: <span style="color: red;">Pendiente</span></p>
+                {% endif %}
+                {# <p>Estudiante: {{tarea.student}}</p> #}
+                <p>Descripción: {{tarea.descripcion}}</p>
+                {# <p>Curso: {{tarea.course.name}}</p> #}
+                <hr>
+            </div>
             {% endfor %}
+            <p><a href="{% url 'busqueda_tareas' %}" class="navbar-brand">Buscar Tareas</a></p>
+            <a class="navbar-brand" href="{% url 'formulario_tareas' %}">Añadir Tareas</a>
         </ul>
     </div>
-    {{hola}}
+
 </body>
 </html>
 {% endblock %}

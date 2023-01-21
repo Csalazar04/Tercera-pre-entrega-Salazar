@@ -15,6 +15,9 @@
             {% for profesor in profesores %}
             <li>{{profesor.nombre}} {{profesor.apellido}}</li>
             {% endfor %}
+            <hr>
+            <p><a href="{% url 'busqueda_profesores' %}" class="navbar-brand">Buscar Profesores</a></p>
+            <a class="navbar-brand" href="{% url 'formulario_profesores' %}">Añadir Profesores</a>
         </ul>
     </div>
 </body>
