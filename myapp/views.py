@@ -32,7 +32,7 @@ def formulario_estudiantes(request):
             data = formulario.cleaned_data
             estudiantes = Estudiantes(nombre=data["nombre"], apellido=data["apellido"], edad=data["edad"], dni=data["dni"], email=data["email"])
             estudiantes.save()
-            return render(request, 'myapp/formulario_estudiantes.html')
+            return redirect(reverse('estudiantes'))
     else:
         formulario = FormularioEstudiantes()
     return render(request,'myapp/formulario_estudiantes.html',{'formulario':formulario})
@@ -40,7 +40,7 @@ def formulario_estudiantes(request):
 def busqueda_estudiantes(request):
     if request.method == "POST":
         data = request.POST
-        estudiantes = Estudiantes.objects.filter(nombre__contains=data['nombre'])
+        estudiantes = Estudiantes.objects.filter(Q(nombre__contains=data['nombre']) | Q(apellido__contains=data['nombre']))
         contexto = {
             'estudiantes': estudiantes
         }
@@ -68,7 +68,7 @@ def formulario_profesores(request):
             data = formulario.cleaned_data
             profesores = Profesores(nombre=data["nombre"], apellido=data["apellido"], edad=data["edad"], dni=data["dni"], email=data["email"], profesion=data["profesion"])
             profesores.save()
-            return redirect(reverse('formulario_profesores'))
+            return redirect(reverse('profesores'))
     else:
         formulario = FormularioProfesores()
     return render(request,'myapp/formulario_profesores.html',{'formulario':formulario})
@@ -76,7 +76,7 @@ def formulario_profesores(request):
 def busqueda_profesores(request):
     if request.method == "POST":
         data = request.POST
-        profesores = Profesores.objects.filter(nombre__contains=data['nombre'])
+        profesores = Profesores.objects.filter(Q(nombre__contains=data['nombre']) | Q(apellido__contains=data['nombre']))
         contexto = {
             'profesores': profesores
         }
@@ -106,7 +106,8 @@ def formulario_carreras(request):
         if formulario.is_valid():
             data = formulario.cleaned_data
             carreras = Carreras(nombre=data["nombre"], semestres=data["semestres"])
-            return redirect(reverse('formulario_carreras'))
+            carreras.save()
+            return redirect(reverse('carreras'))
     else:
         formulario = FormularioCarreras()
     return render(request,'myapp/formulario_carreras.html',{'formulario':formulario})
@@ -114,7 +115,7 @@ def formulario_carreras(request):
 def busqueda_carreras(request):
     if request.method == "POST":
         data = request.POST
-        carreras = Carreras.objects.filter(nombre__contains=data['nombre'])
+        carreras = Carreras.objects.filter(Q(nombre__contains=data['nombre']) | Q(semestres__contains=data['nombre']))
         contexto = {
             'carreras': carreras
         }
@@ -145,7 +146,7 @@ def formulario_tareas(request):
             data = formulario.cleaned_data
             tareas = Tareas(titulo=data["titulo"], descripcion=data["descripcion"], done=data["done"])
             tareas.save()
-            return redirect(reverse('formulario_tareas'))
+            return redirect(reverse('tareas'))
     else:
         formulario = FormularioTareas()
     return render(request,'myapp/formulario_tareas.html',{'formulario':formulario})
@@ -153,7 +154,7 @@ def formulario_tareas(request):
 def busqueda_tareas(request):
     if request.method == "POST":
         data = request.POST
-        tareas = Tareas.objects.filter(titulo__contains = data['titulo'])
+        tareas = Tareas.objects.filter(Q(titulo__contains=data['titulo']) | Q(descripcion__contains=data['titulo']))
         contexto = {
             'tareas': tareas
         }

@@ -14,13 +14,13 @@ class FormularioProfesores(forms.Form):
     edad = forms.IntegerField()
     dni = forms.CharField(max_length=60)
     email = forms.EmailField(max_length=100)
-    profesion = forms.CharField(max_length=40)
+    profesion = forms.CharField(max_length=40, label='Profesión')
 
 
 class FormularioTareas(forms.Form):
     titulo = forms.CharField(max_length=100)
-    descripcion = forms.CharField(widget=forms.Textarea)
-    done = forms.BooleanField(label_suffix="", label="Realizado")
+    descripcion = forms.CharField(widget=forms.Textarea, label='Descripción')
+    done = forms.BooleanField(label_suffix="", label="Realizado", required=False)
 
 
 class FormularioCarreras(forms.Form):

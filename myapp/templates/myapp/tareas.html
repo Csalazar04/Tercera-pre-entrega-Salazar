@@ -24,11 +24,13 @@
         
                 {% if tarea.done == True %}
                 <p>Estado : <span style="color: green;">Realizada</span></p>
+                <p>Descripción: <span style="color: green;">{{tarea.descripcion}}</span></p>
+                <p>Curso: <span style="color: green;">{{tarea.carreras.nombre}}</span></p>
                 {% else %}
                 <p>Estado: <span style="color: red;">Pendiente</span></p>
+                <p>Descripción: <span style="color: red;">{{tarea.descripcion}}</span></p>
+                <p>Carrera: <span style="color: red;">{{tarea.carreras.nombre}}</span></p>
                 {% endif %}
-                <p>Descripción: {{tarea.descripcion}}</p>
-                <p>Curso: {{tarea.carreras.nombre}}</p>
                 <hr>
             </div>
             {% endfor %}
