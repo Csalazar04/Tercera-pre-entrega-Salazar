@@ -9,12 +9,7 @@ from django.db.models import Q
 # Create your views here.
 
 def home(request):
-    path = open(r"C:\Users\user\Desktop\projectoDB\projecto\myapp\templates\myapp\index.html")
-    template = Template(path.read())
-    path.close()
-    context = Context()
-    document = template.render(context)
-    return HttpResponse(document)
+    return render(request,'index.html')
 
 
 # Estudiantes
@@ -50,7 +45,12 @@ def busqueda_estudiantes(request):
             request=request,
             template_name='myapp/busqueda_estudiantes.html',
         )
-    
+
+def ver_estudiantes(request,id):
+    estudiante = Estudiantes.objects.get(id=id)
+    return(request,'myapp/ver_estudiantes.html',{
+        'estudiante': estudiante
+    })
 
 
 #Profesores

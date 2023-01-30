@@ -21,7 +21,7 @@ class FormularioTareas(forms.Form):
     titulo = forms.CharField(max_length=100)
     descripcion = forms.CharField(widget=forms.Textarea, label='Descripción')
     done = forms.BooleanField(label_suffix="", label="Realizado", required=False)
-
+    carreras = forms.CharField(max_length=100)
 
 class FormularioCarreras(forms.Form):
     nombre = forms.CharField(max_length=100)

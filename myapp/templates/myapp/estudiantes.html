@@ -11,10 +11,29 @@
 <body>
     <div>
         <h1>Estudiantes: </h1>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Opciones</th>
+                </tr>
+                {% for estudiante in estudiantes %}
+                <tr>
+                    <td>{{estudiante.nombre}}</td>
+                    <td>{{estudiante.apellido}}</td>
+                    <td>
+                        <a style="text-decoration: none;" href="">Ver</a> <span style="color: darkcyan;">/</span>
+                        <a style="text-decoration: none;" href="">Editar</a> <span style="color: darkcyan;">/</span> 
+                        <a style="text-decoration: none;" href="">Eliminar</a>
+                    </td>
+
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
         <ul>
-            {% for estudiante in estudiantes %}
-            <li><h6>{{estudiante.nombre}} {{estudiante.apellido}}</h6></li>
-            {% endfor %}
             <hr>
             <p><a href="{% url 'busqueda_estudiantes' %}" class="navbar-brand">Buscar Estudiantes</a></p>
             <a class="navbar-brand" href="{% url 'formulario_estudiantes' %}">Añadir Estudiantes</a>
