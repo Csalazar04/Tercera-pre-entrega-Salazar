@@ -1,0 +1,19 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+
+<title>Información del profesor</title>
+    <h1>Profesor</h1>
+    <ul>
+        <li><b>Nombre:</b> {{profesor.nombre}}</li>
+        <li><b>Apellido:</b> {{profesor.apellido}}</li>
+        <li><b>Edad: </b>{{profesor.edad}}</li>
+        <li><b>DNI:</b> {{profesor.dni}}</li>
+        <li><b>Email:</b> {{profesor.email}}</li>
+        <li><b>Profesión:</b> {{profesor.profesion}}</li>
+    </ul>
+    
+    <br><br>
+    <a style="text-decoration: none;" href="{% url 'profesores' %}">Volver a la página de profesores</a>
+
+{% endblock %}

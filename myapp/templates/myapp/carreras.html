@@ -1,28 +1,44 @@
 {% extends 'myapp/base.html'%}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carreras</title>
-</head>
-<body>
+
+<title>Carreras</title>
+
     <div>
-        <h1>¡¡Nuestras Carreras!!</h1>
-        
+        <h1>¡¡Nuestras Carreras!! </h1>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cant. Semestres</th>
+                    <th>Opciones</th>
+                </tr>
+                {% for carrera in carreras %}
+                <tr>
+                    <td>{{carrera.nombre}}</td>
+                    <td>{{carrera.semestres}}</td>
+                    <td>
+                        <a style="text-decoration: none;" href="{% url 'ver_carrera' carrera.id %}">Ver</a> <span style="color: darkcyan;">/</span>
+                        <a style="text-decoration: none;" href="{% url 'editar_carrera' carrera.id %}">Editar</a>
+                    </td>
+                    <td>
+                        <form action="{% url 'eliminar_carrera' carrera.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Eliminar"/>
+                        </form>
+                    </td>
+                        
+                    
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
         <ul>
-            {% for carrera in carreras %}
-            <li><h6>{{carrera.nombre}}, {{carrera.semestres}} semestres</h6></li>
-            
-            {% endfor %}
             <hr>
             <p><a href="{% url 'busqueda_carreras' %}" class="navbar-brand">Buscar Carreras</a></p>
             <a class="navbar-brand" href="{% url 'formulario_carreras' %}">Añadir Carreras</a>
         </ul>
+        
     </div>
-
-</body>
-</html>
+    
 {% endblock %}

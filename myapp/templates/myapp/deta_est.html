@@ -1,5 +1,4 @@
-{% extends 'myapp/base.html' %}
-
+{% extends 'base.html' %}
 {% block content %}
 
 <title>Información del estudiante</title>
@@ -11,8 +10,9 @@
         <li><b>DNI:</b> {{estudiante.dni}}</li>
         <li><b>Email:</b> {{estudiante.email}}</li>
     </ul>
-    
     <br><br>
-    <a style="text-decoration: none;" href="{% url 'estudiantes' %}">Volver a la página de estudiantes</a>
+    <p>
+        <a style="text-decoration: none;" href="{% url 'estudiantes' %}">Volver a la página de estudiantes</a>
+    </p>
 
 {% endblock %}

@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.http import HttpResponse
 from django.template import Template, Context, loader
 from datetime import datetime
 from .models import *
 from .forms import *
 from django.db.models import Q
+from django.views.generic import ListView, CreateView, DetailView,UpdateView, DeleteView
 # Create your views here.
 
 def home(request):
@@ -14,7 +15,7 @@ def home(request):
 
 # Estudiantes
 
-def estudiantes(request):
+'''def estudiantes(request):
     estudiantes = Estudiantes.objects.all()
     return render(request, 'estudiantes.html',{
         'estudiantes':estudiantes
@@ -46,11 +47,67 @@ def busqueda_estudiantes(request):
             template_name='myapp/busqueda_estudiantes.html',
         )
 
-def ver_estudiantes(request,id):
-    estudiante = Estudiantes.objects.get(id=id)
-    return(request,'myapp/ver_estudiantes.html',{
-        'estudiante': estudiante
+def ver_estudiante(request,id):
+    return render(request, 'myapp/ver_estudiantes.html', {
+        'estudiante': Estudiantes.objects.get(id=id)
     })
+
+def editar_estudiante(request, id):
+    estudiante = Estudiantes.objects.get(id=id)
+    if request.method == "POST":
+        formulario = FormularioEstudiantes(request.POST)
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            estudiante.nombre = data['nombre']
+            estudiante.apellido = data['apellido']
+            estudiante.edad = data['edad']
+            estudiante.dni = data['dni']
+            estudiante.email = data['email']
+            estudiante.save()
+            return redirect(reverse('estudiantes'))
+    else:
+        inicial = {
+            'nombre': estudiante.nombre,
+            'apellido': estudiante.apellido,
+            'edad': estudiante.edad,
+            'dni': estudiante.dni,
+            'email': estudiante.email,
+        }
+        formulario = FormularioEstudiantes(initial=inicial)
+    return render(request,'myapp/formulario_estudiantes.html',{'formulario':formulario,'estudiante':estudiante,'es_update': True})
+
+def eliminar_estudiante(request, id):
+    estudiante = Estudiantes.objects.get(id=id)
+    if request.method == "POST":
+        estudiante.delete()
+        return redirect(reverse('estudiantes'))'''
+
+
+class EstudiantesView(ListView):
+    model = Estudiantes
+    template_name = 'myapp/estudiantes2.html'
+
+
+class EstudiantesCreateView(CreateView):
+    model = Estudiantes
+    fields = ['nombre', 'apellido', 'dni', 'email']
+    success_url = reverse_lazy('estudiantes2')
+
+
+class EstudiantesUpdateView(UpdateView):
+    model = Estudiantes
+    fields = ['nombre', 'apellido', 'dni', 'email']
+    success_url = reverse_lazy('estudiantes2')
+    
+
+class EstudiantesDeleteView(DeleteView):
+    model = Estudiantes
+    success_url = reverse_lazy('estudiantes2')
+
+
+class EstudiantesDetailView(DetailView):
+    model = Estudiantes
+    success_url = reverse_lazy('estudiantes2')
 
 
 #Profesores
@@ -91,6 +148,43 @@ def busqueda_profesores(request):
             template_name='myapp/busqueda_profesores.html',
         )
 
+def ver_profesor(request,id):
+    return render(request, 'myapp/ver_profesores.html', {
+        'profesor': Profesores.objects.get(id=id)
+    })
+
+def editar_profesor(request, id):
+    profesor = Profesores.objects.get(id=id)
+    if request.method == "POST":
+        formulario = FormularioProfesores(request.POST)
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            profesor.nombre = data['nombre']
+            profesor.apellido = data['apellido']
+            profesor.edad = data['edad']
+            profesor.dni = data['dni']
+            profesor.email = data['email']
+            profesor.profesion = data['profesion']
+            profesor.save()
+            return redirect(reverse('profesores'))
+    else:
+        inicial = {
+            'nombre': profesor.nombre,
+            'apellido': profesor.apellido,
+            'edad': profesor.edad,
+            'dni': profesor.dni,
+            'email': profesor.email,
+            'profesion': profesor.profesion,
+        }
+        formulario = FormularioProfesores(initial=inicial)
+    return render(request,'myapp/formulario_profesores.html',{'formulario':formulario,'profesor':profesor,'es_update': True})
+
+def eliminar_profesor(request, id):
+    profesor = Profesores.objects.get(id=id)
+    if request.method == "POST":
+        profesor.delete()
+        return redirect(reverse('profesores'))
+
 
 #Carreras
 
@@ -130,6 +224,34 @@ def busqueda_carreras(request):
             template_name='myapp/busqueda_carreras.html',
         )
 
+def ver_carrera(request,id):
+    return render(request, 'myapp/ver_carreras.html', {
+        'carrera': Carreras.objects.get(id=id)
+    })
+
+def editar_carrera(request, id):
+    carrera = Carreras.objects.get(id=id)
+    if request.method == "POST":
+        formulario = FormularioCarreras(request.POST)
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            carrera.nombre = data['nombre']
+            carrera.semestres = data['semestres']
+            carrera.save()
+            return redirect(reverse('carreras'))
+    else:
+        inicial = {
+            'nombre': carrera.nombre,
+            'semestres': carrera.semestres,
+        }
+        formulario = FormularioCarreras(initial=inicial)
+    return render(request,'myapp/formulario_carreras.html',{'formulario':formulario,'carrera':carrera,'es_update': True})
+
+def eliminar_carrera(request, id):
+    carrera = Carreras.objects.get(id=id)
+    if request.method == "POST":
+        carrera.delete()
+        return redirect(reverse('carreras'))
 
 #Tareas
 
@@ -144,7 +266,7 @@ def formulario_tareas(request):
         formulario = FormularioTareas(request.POST)
         if formulario.is_valid():
             data = formulario.cleaned_data
-            tareas = Tareas(titulo=data["titulo"], descripcion=data["descripcion"], done=data["done"])
+            tareas = Tareas(titulo=data["titulo"], descripcion=data["descripcion"], done=data["done"], carreras_id=data["carreras"])
             tareas.save()
             return redirect(reverse('tareas'))
     else:
@@ -168,3 +290,37 @@ def busqueda_tareas(request):
             request=request,
             template_name='myapp/busqueda_tareas.html',
         )
+
+def ver_tarea(request,id):
+    return render(request, 'myapp/ver_tareas.html', {
+        'tarea': Tareas.objects.get(id=id)
+    })
+
+def editar_tarea(request, id):
+    tarea = Tareas.objects.get(id=id)
+    if request.method == "POST":
+        formulario = FormularioTareas(request.POST)
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            tarea.titulo = data['titulo']
+            tarea.descripcion = data['descripcion']
+            tarea.done = data['done']
+            tarea.carreras = data['carreras']
+            tarea.save()
+            return redirect(reverse('tareas'))
+    else:
+        inicial = {
+            'titulo': tarea.titulo,
+            'descripcion': tarea.descripcion,
+            'done': tarea.done,
+            'carreras': tarea.carreras,
+        }
+        formulario = FormularioTareas(initial=inicial)
+    return render(request,'myapp/formulario_tareas.html',{'formulario':formulario,'tarea':tarea,'es_update': True})
+
+def eliminar_tarea(request, id):
+    tarea = Tareas.objects.get(id=id)
+    if request.method == "POST":
+        tarea.delete()
+        return redirect(reverse('tareas'))
+

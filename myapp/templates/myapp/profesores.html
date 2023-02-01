@@ -1,25 +1,43 @@
 {% extends 'myapp/base.html'%}
+
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profesores</title>
-</head>
-<body>
+
+<title>Profesores</title>
     <div>
         <h1>Profesores: </h1>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Opciones</th>
+                </tr>
+                {% for profesor in profesores %}
+                <tr>
+                    <td>{{profesor.nombre}}</td>
+                    <td>{{profesor.apellido}}</td>
+                    <td>
+                        <a style="text-decoration: none;" href="{% url 'ver_profesor' profesor.id %}">Ver</a> <span style="color: darkcyan;">/</span>
+                        <a style="text-decoration: none;" href="{% url 'editar_profesor' profesor.id %}">Editar</a>
+                    </td>
+                    <td>
+                        <form action="{% url 'eliminar_profesor' profesor.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Eliminar"/>
+                        </form>
+                    </td>
+
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
         <ul>
-            {% for profesor in profesores %}
-            <li><h6>{{profesor.nombre}} {{profesor.apellido}}</h6></li>
-            {% endfor %}
             <hr>
             <p><a href="{% url 'busqueda_profesores' %}" class="navbar-brand">Buscar Profesores</a></p>
             <a class="navbar-brand" href="{% url 'formulario_profesores' %}">Añadir Profesores</a>
         </ul>
+        
     </div>
-</body>
-</html>
+
 {% endblock %}

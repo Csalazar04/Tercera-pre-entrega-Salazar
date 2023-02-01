@@ -1,0 +1,15 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+
+<title>Información de la carrera</title>
+    <h1>Carreras</h1>
+    <ul>
+        <li><b>Nombre de la carrera: </b> {{carrera.nombre}}</li>
+        <li><b>Cantidad de Semestres: </b>{{carrera.semestres}}</li>
+    </ul>
+    
+    <br><br>
+    <a style="text-decoration: none;" href="{% url 'carreras' %}">Volver a la página de carreras</a>
+
+{% endblock %}

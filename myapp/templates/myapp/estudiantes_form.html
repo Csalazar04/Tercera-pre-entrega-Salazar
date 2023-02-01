@@ -2,10 +2,11 @@
 
 {% block content %}
 
-<title>Añadir Profesores</title>
-<form method="post" action="{% url 'formulario_tareas' %}">
+<title>Editar estudiante</title>
+
+<form method="post">
     {% csrf_token %}
-    {{ formulario.as_p }}
+    {{ form.as_p }}
     <input type="submit" name="Enviar">
 </form>
 

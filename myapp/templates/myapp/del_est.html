@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<title>Borrar Estudiante</title>
+
+<form method="post">
+    {% csrf_token %}
+    ¿Estás seguro que deseas borrar al estudiante '{{object}}'?
+    <input type="submit" value="Enviar">
+</form>
+
+{% endblock %}

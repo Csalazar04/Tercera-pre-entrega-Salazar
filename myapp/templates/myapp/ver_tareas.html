@@ -1,0 +1,17 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+
+<title>Información de la tarea</title>
+    <h1>Tarea</h1>
+    <ul>
+        <li><b>Titulo:</b> {{tarea.titulo}}</li>
+        <li><b>Descripción:</b> {{tarea.descripcion}}</li>
+        <li><b>Done: </b>{{tarea.done}}</li>
+        <li><b>Carreras:</b> {{tarea.carreras}}</li>
+    </ul>
+    
+    <br><br>
+    <a style="text-decoration: none;" href="{% url 'tareas' %}">Volver a la página de tareas</a>
+
+{% endblock %}

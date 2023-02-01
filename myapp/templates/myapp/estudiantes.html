@@ -1,14 +1,8 @@
 {% extends 'myapp/base.html'%}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudiantes</title>
-</head>
-<body>
+
+<title>Estudiantes</title>
+
     <div>
         <h1>Estudiantes: </h1>
         <table class="table">
@@ -18,14 +12,19 @@
                     <th>Apellido</th>
                     <th>Opciones</th>
                 </tr>
-                {% for estudiante in estudiantes %}
+                {% for estudiante in objects %}
                 <tr>
                     <td>{{estudiante.nombre}}</td>
                     <td>{{estudiante.apellido}}</td>
                     <td>
-                        <a style="text-decoration: none;" href="">Ver</a> <span style="color: darkcyan;">/</span>
-                        <a style="text-decoration: none;" href="">Editar</a> <span style="color: darkcyan;">/</span> 
-                        <a style="text-decoration: none;" href="">Eliminar</a>
+                        <a style="text-decoration: none;" href="{% url 'ver_estudiante' estudiante.id %}">Ver</a> <span style="color: darkcyan;">/</span>
+                        <a style="text-decoration: none;" href="{% url 'editar_estudiante' estudiante.id %}">Editar</a>
+                    </td>
+                    <td>
+                        <form action="{% url 'eliminar_estudiante' estudiante.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Eliminar"/>
+                        </form>
                     </td>
 
                 </tr>
@@ -40,7 +39,5 @@
         </ul>
         
     </div>
-    </section>
-</body>
-</html>
+
 {% endblock %}
