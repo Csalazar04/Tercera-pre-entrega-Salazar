@@ -6,7 +6,7 @@ from datetime import datetime
 from .models import *
 from .forms import *
 from django.db.models import Q
-from django.views.generic import ListView, CreateView, DetailView,UpdateView, DeleteView
+from django.views.generic import *
 # Create your views here.
 
 def home(request):
@@ -83,32 +83,43 @@ def eliminar_estudiante(request, id):
         return redirect(reverse('estudiantes'))'''
 
 
-class EstudiantesView(ListView):
+class EstudiantesListView(ListView):
     model = Estudiantes
     template_name = 'myapp/estudiantes2.html'
 
 
 class EstudiantesCreateView(CreateView):
     model = Estudiantes
-    fields = ['nombre', 'apellido', 'dni', 'email']
-    success_url = reverse_lazy('estudiantes2')
+    fields = ['nombre', 'apellido', 'edad','dni', 'email']
+    success_url = reverse_lazy('estudiantes')
+    template_name = 'myapp/est_form.html'
 
 
 class EstudiantesUpdateView(UpdateView):
     model = Estudiantes
-    fields = ['nombre', 'apellido', 'dni', 'email']
-    success_url = reverse_lazy('estudiantes2')
-    
-
+    fields = ['nombre', 'apellido', 'edad','dni', 'email']
+    success_url = reverse_lazy('estudiantes')
+    template_name = 'myapp/est_form.html'
+  
 class EstudiantesDeleteView(DeleteView):
     model = Estudiantes
-    success_url = reverse_lazy('estudiantes2')
+    success_url = reverse_lazy('estudiantes')
+    template_name = 'myapp/del_est.html'
 
 
 class EstudiantesDetailView(DetailView):
     model = Estudiantes
-    success_url = reverse_lazy('estudiantes2')
+    success_url = reverse_lazy('estudiantes')
+    template_name = 'myapp/est_detail.html'
 
+def busqueda_estudiantes(request):
+    if request.method == "POST":
+        data = request.POST
+        estudiantes = Estudiantes.objects.filter(Q(nombre__contains=data['nombre']) | Q(apellido__contains=data['nombre']))
+        contexto = {'estudiantes': estudiantes}
+        return render( request,'myapp/estudiantes2.html',contexto,)
+    else:  
+        return render(request,'myapp/busqueda_estudiantes.html',)
 
 #Profesores
 

@@ -17,9 +17,9 @@
                     <td>{{estudiante.nombre}}</td>
                     <td>{{estudiante.apellido}}</td>
                     <td>
-                        <a style="text-decoration: none;" href="">Ver</a><span style="color: darkcyan;">/</span>
-                        <a style="text-decoration: none;" href="{% url 'edit' estudiante.id %}">Editar</a><span style="color: darkcyan;">/</span>
-                        <a style="text-decoration: none;" href="">Eliminar</a>
+                        <a style="text-decoration: none;" href="{% url 'ver_estudiante' estudiante.id %}">Ver</a><span style="color: darkcyan;">/</span>
+                        <a style="text-decoration: none;" href="{% url 'editar_estudiante' estudiante.id %}">Editar</a><span style="color: darkcyan;">/</span>
+                        <a style="text-decoration: none;" href="{% url 'eliminar_estudiante' estudiante.id %}">Eliminar</a>
                     </td>
 
                 </tr>
@@ -27,8 +27,10 @@
                 {% endfor %}
             </tbody>
         </table>
-        
-        
+        <ul>
+            <p><a href="{% url 'busqueda_estudiantes' %}" class="navbar-brand">Buscar Estudiantes</a></p>
+            <a class="navbar-brand" href="{% url 'crear_estudiante' %}">Añadir Estudiantes</a>
+        </ul>
     </div>
 
 {% endblock %}

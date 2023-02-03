@@ -5,8 +5,11 @@
 
 <form method="post">
     {% csrf_token %}
-    ¿Estás seguro que deseas borrar al estudiante '{{object}}'?
-    <input type="submit" value="Enviar">
+    <h4>Eliminaras para siempre al estudiante '{{object}}'</h4>
+    <br>
+    <input type="submit" value="Aceptar">
+    <a style="text-decoration: none;" href="{% url 'estudiantes' %}">Volver</a>
+
 </form>
 
 {% endblock %}

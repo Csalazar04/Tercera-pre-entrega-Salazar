@@ -6,16 +6,16 @@ urlpatterns = [
 
     #path('estudiantes/', estudiantes, name='estudiantes'),
     #path('formulario-estudiantes/',formulario_estudiantes, name= 'formulario_estudiantes'),
-    #path('busqueda-estudiantes/', busqueda_estudiantes, name='busqueda_estudiantes'),
+    path('busqueda-estudiantes/', busqueda_estudiantes, name='busqueda_estudiantes'),
     #path('estudiantes/ver/<int:id>', ver_estudiante, name='ver_estudiante'),
     #path('estudiantes/editar/<int:id>', editar_estudiante, name='editar_estudiante'),
     #path('estudiantes/eliminar/<int:id>', eliminar_estudiante, name='eliminar_estudiante'),
 
-    path('estudiantes/', EstudiantesView.as_view(), name='estudiantes'),
-    path('estudiantes/delete/<int:pk>', EstudiantesDeleteView.as_view(), name='delete'),
-    path('estudiantes/edit/<int:pk>', EstudiantesUpdateView.as_view(), name='edit'),
-    path('estudiantes/create/', EstudiantesCreateView.as_view(), name='create'),
-    path('estudiantes/detail/', EstudiantesDetailView.as_view(), name='detail'),
+    path('estudiantes/', EstudiantesListView.as_view(), name='estudiantes'),
+    path('estudiantes/eliminar/<int:pk>', EstudiantesDeleteView.as_view(), name='eliminar_estudiante'),
+    path('estudiantes/editar/<int:pk>', EstudiantesUpdateView.as_view(), name='editar_estudiante'),
+    path('estudiantes/crear/', EstudiantesCreateView.as_view(), name='crear_estudiante'),
+    path('estudiantes/ver/<int:pk>', EstudiantesDetailView.as_view(), name='ver_estudiante'),
 
     path('profesores/', profesores, name='profesores'),
     path('formulario-profesores/',formulario_profesores, name= 'formulario_profesores'),
