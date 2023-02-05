@@ -4,18 +4,18 @@ from .views import *
 urlpatterns = [
     path('', home, name='home'),
 
-    #path('estudiantes/', estudiantes, name='estudiantes'),
-    #path('formulario-estudiantes/',formulario_estudiantes, name= 'formulario_estudiantes'),
+    path('estudiantes/', estudiantes, name='estudiantes'),
+    path('formulario-estudiantes/',formulario_estudiantes, name= 'formulario_estudiantes'),
     path('estudiantes/buscar/', buscar_estudiantes, name='buscar_estudiantes'),
-    #path('estudiantes/ver/<int:id>', ver_estudiante, name='ver_estudiante'),
-    #path('estudiantes/editar/<int:id>', editar_estudiante, name='editar_estudiante'),
-    #path('estudiantes/eliminar/<int:id>', eliminar_estudiante, name='eliminar_estudiante'),
+    path('estudiantes/ver/<int:id>', ver_estudiante, name='ver_estudiante'),
+    path('estudiantes/editar/<int:id>', editar_estudiante, name='editar_estudiante'),
+    path('estudiantes/eliminar/<int:id>', eliminar_estudiante, name='eliminar_estudiante'),
 
-    path('estudiantes/', EstudiantesListView.as_view(), name='estudiantes'),
-    path('estudiantes/eliminar/<int:pk>', EstudiantesDeleteView.as_view(), name='eliminar_estudiante'),
-    path('estudiantes/editar/<int:pk>', EstudiantesUpdateView.as_view(), name='editar_estudiante'),
-    path('estudiantes/crear/', EstudiantesCreateView.as_view(), name='crear_estudiante'),
-    path('estudiantes/ver/<int:pk>', EstudiantesDetailView.as_view(), name='ver_estudiante'),
+    #path('estudiantes/', EstudiantesListView.as_view(), name='estudiantes'),
+    #path('estudiantes/eliminar/<int:pk>', EstudiantesDeleteView.as_view(), name='eliminar_estudiante'),
+    #path('estudiantes/editar/<int:pk>', EstudiantesUpdateView.as_view(), name='editar_estudiante'),
+    #path('estudiantes/crear/', EstudiantesCreateView.as_view(), name='crear_estudiante'),
+    #path('estudiantes/ver/<int:pk>', EstudiantesDetailView.as_view(), name='ver_estudiante'),
 
     path('profesores/', profesores, name='profesores'),
     path('formulario-profesores/',formulario_profesores, name= 'formulario_profesores'),

@@ -1,0 +1,12 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+
+
+<form method="post" action="{% url 'formulario_estudiantes' %}">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <input type="submit" name="Guardar">
+</form>
+
+{% endblock %}

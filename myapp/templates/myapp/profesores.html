@@ -23,7 +23,7 @@
                     <td>
                         <form action="{% url 'eliminar_profesor' profesor.id %}" method="post">
                             {% csrf_token %}
-                            <input class="btn btn-link" type="submit" value="Eliminar"/>
+                            <input type="submit" value="Eliminar"/>
                         </form>
                     </td>
 

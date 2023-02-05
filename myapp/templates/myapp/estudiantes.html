@@ -12,7 +12,7 @@
                     <th>Apellido</th>
                     <th>Opciones</th>
                 </tr>
-                {% for estudiante in objects %}
+                {% for estudiante in estudiantes %}
                 <tr>
                     <td>{{estudiante.nombre}}</td>
                     <td>{{estudiante.apellido}}</td>
@@ -34,7 +34,7 @@
         </table>
         <ul>
             <hr>
-            <p><a href="{% url 'busqueda_estudiantes' %}" class="navbar-brand">Buscar Estudiantes</a></p>
+            <p><a href="{% url 'buscar_estudiantes' %}" class="navbar-brand">Buscar Estudiantes</a></p>
             <a class="navbar-brand" href="{% url 'formulario_estudiantes' %}">Añadir Estudiantes</a>
         </ul>
         

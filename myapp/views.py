@@ -22,7 +22,8 @@ def home(request):
 
 # Estudiantes
 
-'''def estudiantes(request):
+@login_required
+def estudiantes(request):
     estudiantes = Estudiantes.objects.all()
     return render(request, 'estudiantes.html',{
         'estudiantes':estudiantes
@@ -39,20 +40,6 @@ def formulario_estudiantes(request):
     else:
         formulario = FormularioEstudiantes()
     return render(request,'myapp/formulario_estudiantes.html',{'formulario':formulario})
-
-def busqueda_estudiantes(request):
-    if request.method == "POST":
-        data = request.POST
-        estudiantes = Estudiantes.objects.filter(Q(nombre__contains=data['nombre']) | Q(apellido__contains=data['nombre']))
-        contexto = {
-            'estudiantes': estudiantes
-        }
-        return render( request,'myapp/estudiantes.html',contexto,)
-    else:  
-        return render(
-            request=request,
-            template_name='myapp/busqueda_estudiantes.html',
-        )
 
 def ver_estudiante(request,id):
     return render(request, 'myapp/ver_estudiantes.html', {
@@ -87,38 +74,7 @@ def eliminar_estudiante(request, id):
     estudiante = Estudiantes.objects.get(id=id)
     if request.method == "POST":
         estudiante.delete()
-        return redirect(reverse('estudiantes'))'''
-
-
-class EstudiantesListView(LoginRequiredMixin, ListView):
-    model = Estudiantes
-    template_name = 'myapp/estudiantes2.html'
-
-
-class EstudiantesCreateView(CreateView):
-    model = Estudiantes
-    fields = ['nombre', 'apellido', 'edad','dni', 'email']
-    success_url = reverse_lazy('estudiantes')
-    template_name = 'myapp/est_form.html'
-
-
-class EstudiantesUpdateView(UpdateView):
-    model = Estudiantes
-    fields = ['nombre', 'apellido', 'edad','dni', 'email']
-    success_url = reverse_lazy('estudiantes')
-    template_name = 'myapp/est_form.html'
-
-
-class EstudiantesDeleteView(DeleteView):
-    model = Estudiantes
-    success_url = reverse_lazy('estudiantes')
-    template_name = 'myapp/del_est.html'
-
-
-class EstudiantesDetailView(DetailView):
-    model = Estudiantes
-    success_url = reverse_lazy('estudiantes')
-    template_name = 'myapp/est_detail.html'
+        return redirect(reverse('estudiantes'))
 
 def buscar_estudiantes(request):
     if request.method == "POST":
@@ -129,7 +85,7 @@ def buscar_estudiantes(request):
         }
         return render(
             request=request,
-            template_name='myapp/estudiantes2.html',
+            template_name='myapp/estudiantes.html',
             context=contexto,
         )
     else:  
@@ -218,36 +174,6 @@ def eliminar_profesor(request, id):
         render(request, 'del_prof.html')
         profesor.delete()
         return redirect(reverse('profesores'))
-
-class ProfesoresListView(ListView):
-    model = Profesores
-    template_name = 'myapp/profesores.html'
-
-
-class ProfesoresCreateView(LoginRequiredMixin, CreateView):
-    model = Profesores
-    fields = ['nombre', 'apellido', 'edad','dni', 'email']
-    success_url = reverse_lazy('profesores')
-    template_name = 'myapp/est_form.html'
-
-
-class ProfesoresUpdateView(LoginRequiredMixin, UpdateView):
-    model = Profesores
-    fields = ['nombre', 'apellido', 'edad','dni', 'email']
-    success_url = reverse_lazy('profesores')
-    template_name = 'myapp/est_form.html'
-  
-class ProfesoresDeleteView(LoginRequiredMixin, DeleteView):
-    model = Profesores
-    success_url = reverse_lazy('profesores')
-    template_name = 'myapp/del_est.html'
-
-
-class ProfesoresDetailView(LoginRequiredMixin, DetailView):
-    model = Profesores
-    success_url = reverse_lazy('profesores')
-    template_name = 'myapp/est_detail.html'
-
 
 #Carreras
 
