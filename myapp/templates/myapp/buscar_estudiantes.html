@@ -1,8 +1,9 @@
 {% extends 'myapp/base.html' %}
+
 {% block content %}
 
 <title>Buscar Carrera</title>
-<form action="{% url 'busqueda_estudiantes' %}" method="post">
+<form action="{% url 'buscar_estudiantes' %}" method="post">
     {% csrf_token %}
     <p>Nombre del estudiante:</p>
     <input type="text" name="nombre">

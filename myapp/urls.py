@@ -6,7 +6,7 @@ urlpatterns = [
 
     #path('estudiantes/', estudiantes, name='estudiantes'),
     #path('formulario-estudiantes/',formulario_estudiantes, name= 'formulario_estudiantes'),
-    path('busqueda-estudiantes/', busqueda_estudiantes, name='busqueda_estudiantes'),
+    path('estudiantes/buscar/', buscar_estudiantes, name='buscar_estudiantes'),
     #path('estudiantes/ver/<int:id>', ver_estudiante, name='ver_estudiante'),
     #path('estudiantes/editar/<int:id>', editar_estudiante, name='editar_estudiante'),
     #path('estudiantes/eliminar/<int:id>', eliminar_estudiante, name='eliminar_estudiante'),
@@ -37,4 +37,9 @@ urlpatterns = [
     path('tareas/ver/<int:id>', ver_tarea, name='ver_tarea'),
     path('tareas/editar/<int:id>', editar_tarea, name='editar_tarea'),
     path('tareas/eliminar/<int:id>', eliminar_tarea, name='eliminar_tarea'),
+
+    path('registro/', registro, name='registro'),
+    path('login/', login_view, name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    
 ]
