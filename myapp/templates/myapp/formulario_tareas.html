@@ -2,8 +2,12 @@
 
 {% block content %}
 
-<title>Añadir Profesores</title>
-<form method="post" action="{% url 'formulario_tareas' %}">
+<title>Añadir Tareas</title>
+{% if es_update %}
+    <form method="post" action="{% url 'editar_tarea' tarea.id %}">
+{% else %}
+    <form method="post" action="{% url 'formulario_tareas' %}">
+{% endif %}
     {% csrf_token %}
     {{ formulario.as_p }}
     <input type="submit" name="Enviar">

@@ -20,10 +20,24 @@
                 <p>Estado : <span style="color: green;">Realizada</span></p>
                 <p>Descripción: <span style="color: green;">{{tarea.descripcion}}</span></p>
                 <p>Carrera: <span style="color: green;">{{tarea.carreras.nombre}}</span></p>
+                Opciones:
+                <a style="text-decoration: none;" href="{% url 'ver_tarea' tarea.id %}"><span style="color: green;">Ver</span></a> <span style="color: green;">/</span>
+                <a style="text-decoration: none;" href="{% url 'editar_tarea' tarea.id %}"><span style="color: green;">Editar</span></a>
+                <form action="{% url 'eliminar_tarea' tarea.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Eliminar"/>
+                </form>
                 {% else %}
                 <p>Estado: <span style="color: red;">Pendiente</span></p>
                 <p>Descripción: <span style="color: red;">{{tarea.descripcion}}</span></p>
                 <p>Carrera: <span style="color: red;">{{tarea.carreras.nombre}}</span></p>
+                Opciones:
+                <a style="text-decoration: none;" href="{% url 'ver_tarea' tarea.id %}"><span style="color: red;">Ver</span></a> <span style="color: red;">/</span>
+                <a style="text-decoration: none;" href="{% url 'editar_tarea' tarea.id %}"><span style="color: red;">Editar</span></a>
+                <form action="{% url 'eliminar_tarea' tarea.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Eliminar"/>
+                </form>
                 {% endif %}
                 <hr>
             </div>

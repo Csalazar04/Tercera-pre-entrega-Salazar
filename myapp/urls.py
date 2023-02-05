@@ -41,5 +41,6 @@ urlpatterns = [
     path('registro/', registro, name='registro'),
     path('login/', login_view, name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('editar-perfil', ProfileUpdateView.as_view(), name='editar_perfil'),
     
 ]

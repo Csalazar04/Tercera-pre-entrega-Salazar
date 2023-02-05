@@ -27,8 +27,23 @@
                 <a class="navbar-brand" href="{% url 'carreras' %}">Carreras</a>
                 <a class="navbar-brand" href="{% url 'tareas' %}">Tareas</a> 
                 <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-                <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
-                <a class="btn btn-primary" href="{% url 'registro' %}">REGISTRO</a>
+                {% if user.is_authenticated %}
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ user.username }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="{url 'editar_perfil'}">Editar mis datos</a></li>
+                      <li><a class="dropdown-item" href="#">Agregar Avatar</a></li>
+                      <li><a class="dropdown-item" href="{% url 'logout' %}"><strong>Logout</strong></a></li>
+                    </li>
+                    </ul>
+                </div>
+                {% else %}
+                    <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+                    <a class="btn btn-primary" href="{% url 'registro' %}">REGISTRO</a>
+                {% endif %}
+                
             </div>
         </nav>
         <section style="padding: 80px 40px;">

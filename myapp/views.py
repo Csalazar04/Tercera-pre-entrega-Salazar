@@ -90,32 +90,32 @@ def eliminar_estudiante(request, id):
         return redirect(reverse('estudiantes'))'''
 
 
-class EstudiantesListView(ListView):
+class EstudiantesListView(LoginRequiredMixin, ListView):
     model = Estudiantes
     template_name = 'myapp/estudiantes2.html'
 
 
-class EstudiantesCreateView(LoginRequiredMixin, CreateView):
+class EstudiantesCreateView(CreateView):
     model = Estudiantes
     fields = ['nombre', 'apellido', 'edad','dni', 'email']
     success_url = reverse_lazy('estudiantes')
     template_name = 'myapp/est_form.html'
 
 
-class EstudiantesUpdateView(LoginRequiredMixin, UpdateView):
+class EstudiantesUpdateView(UpdateView):
     model = Estudiantes
     fields = ['nombre', 'apellido', 'edad','dni', 'email']
     success_url = reverse_lazy('estudiantes')
     template_name = 'myapp/est_form.html'
 
 
-class EstudiantesDeleteView(LoginRequiredMixin, DeleteView):
+class EstudiantesDeleteView(DeleteView):
     model = Estudiantes
     success_url = reverse_lazy('estudiantes')
     template_name = 'myapp/del_est.html'
 
 
-class EstudiantesDetailView(LoginRequiredMixin, DetailView):
+class EstudiantesDetailView(DetailView):
     model = Estudiantes
     success_url = reverse_lazy('estudiantes')
     template_name = 'myapp/est_detail.html'
@@ -147,6 +147,7 @@ def profesores(request):
         'profesores':profesores
     }) 
 
+@login_required
 def formulario_profesores(request):
     if request.method == "POST":
         formulario = FormularioProfesores(request.POST)
@@ -177,6 +178,7 @@ def busqueda_profesores(request):
             template_name='myapp/busqueda_profesores.html',
         )
 
+@login_required
 def ver_profesor(request,id):
     return render(request, 'myapp/ver_profesores.html', {
         'profesor': Profesores.objects.get(id=id)
@@ -255,6 +257,7 @@ def carreras(request):
         'carreras':carreras
     })
 
+@login_required
 def formulario_carreras(request):
     if request.method == "POST":
         formulario = FormularioCarreras(request.POST)
@@ -290,6 +293,7 @@ def ver_carrera(request,id):
         'carrera': Carreras.objects.get(id=id)
     })
 
+@login_required
 def editar_carrera(request, id):
     carrera = Carreras.objects.get(id=id)
     if request.method == "POST":
@@ -308,6 +312,7 @@ def editar_carrera(request, id):
         formulario = FormularioCarreras(initial=inicial)
     return render(request,'myapp/formulario_carreras.html',{'formulario':formulario,'carrera':carrera,'es_update': True})
 
+@login_required
 def eliminar_carrera(request, id):
     carrera = Carreras.objects.get(id=id)
     if request.method == "POST":
@@ -317,6 +322,7 @@ def eliminar_carrera(request, id):
 
 #Tareas
 
+@login_required
 def tareas(request):
     tareas = Tareas.objects.all()
     return render(request, 'tareas.html',{
@@ -328,7 +334,8 @@ def formulario_tareas(request):
         formulario = FormularioTareas(request.POST)
         if formulario.is_valid():
             data = formulario.cleaned_data
-            tareas = Tareas(titulo=data["titulo"], descripcion=data["descripcion"], done=data["done"], carreras_id=data["carreras"])
+            tareas = Tareas(titulo=data["titulo"], descripcion=data["descripcion"], done=data["done"])
+            tareas.carreras = data['carreras']
             tareas.save()
             return redirect(reverse('tareas'))
     else:
@@ -352,6 +359,7 @@ def busqueda_tareas(request):
             request=request,
             template_name='myapp/busqueda_tareas.html',
         )
+
 
 def ver_tarea(request,id):
     return render(request, 'myapp/ver_tareas.html', {
@@ -395,7 +403,7 @@ def registro(request):
 
         if formulario.is_valid():
             formulario.save()
-            url_exitosa = reverse('inicio')
+            url_exitosa = reverse('home')
             return redirect(url_exitosa)
     else:
         formulario = UserRegisterForm()
@@ -428,3 +436,13 @@ class LogoutView(LogoutView):
     template_name = 'myapp/logout.html'
     next_page = reverse_lazy('home')
 
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    success_url = reverse_lazy('home')
+    template_name = 'myapp/formulario_perfil.html'
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    

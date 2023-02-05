@@ -37,4 +37,4 @@ class Tareas(models.Model):
     carreras = models.ForeignKey(Carreras, related_name='Carreras', null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.carreras}: {self.titulo}"
+        return f"{self.carreras.nombre}: {self.titulo}"
