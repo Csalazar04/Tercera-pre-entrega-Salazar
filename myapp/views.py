@@ -22,6 +22,9 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+def acerca_de(request):
+    return render(request, 'acerca_de.html')
+
 # Estudiantes
 
 @login_required

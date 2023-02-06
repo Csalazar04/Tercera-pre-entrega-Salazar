@@ -26,7 +26,6 @@
                 <a class="navbar-brand" href="{% url 'profesores' %}">Profesores</a>
                 <a class="navbar-brand" href="{% url 'carreras' %}">Carreras</a>
                 <a class="navbar-brand" href="{% url 'tareas' %}">Tareas</a> 
-                <a class="navbar-brand "href="{% url 'about' %}">About</a>
                 <a class="navbar-brand" href="{% url 'home' %}">Home</a>
                 {% if request.user.is_authenticated %}
                 <div class="dropdown">
@@ -69,10 +68,9 @@
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">Acerca de</a></li>
-                      
+                            <li class="list-inline-item"><a class="navbar-brand" href="{% url 'acerca_de' %}">Acerca de mi</a></li><p class="text-muted small mb-4 mb-lg-0">&copy; Caleb Salazar.</p><br>
+                            <li class="list-inline-item"><a class="navbar-brand" href="{% url 'about' %}">About</a></li>
                         </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; Caleb Salazar.</p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
