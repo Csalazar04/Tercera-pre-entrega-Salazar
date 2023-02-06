@@ -176,7 +176,6 @@ def editar_profesor(request, id):
 def eliminar_profesor(request, id):
     profesor = Profesores.objects.get(id=id)
     if request.method == "POST":
-        render(request, 'del_prof.html')
         profesor.delete()
         return redirect(reverse('profesores'))
 
