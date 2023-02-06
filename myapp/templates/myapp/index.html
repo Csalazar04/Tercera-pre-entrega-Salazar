@@ -4,10 +4,6 @@
 
 <title>Home</title>
     <h1>Bienvenido {{ request.user.username }}</h1>
-    <h6>Utiliza esta base de datos si deseas tener un registro de:</h6>
-    <li>Estudiantes</li>
-    <li>Profesores</li>
-    <li>Carreras</li>
-    <li>Tareas</li>
+    <img src="{{ user.avatar.imagen.url }}" />
 
 {% endblock %}

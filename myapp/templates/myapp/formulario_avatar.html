@@ -2,11 +2,11 @@
 
 {% block content %}
 
-
-<form method="post" action="{% url 'formulario_estudiantes' %}">
+<h3>Suba su avatar</h3>
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ formulario.as_p }}
-    <input type="submit" name="Guardar">
+    <input type="submit" value="Subir imagen"/>
 </form>
 
 {% endblock %}

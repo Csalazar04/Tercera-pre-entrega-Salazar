@@ -3,6 +3,7 @@ from .views import *
 
 urlpatterns = [
     path('', home, name='home'),
+    path('about/', about, name='about'),
 
     path('estudiantes/', estudiantes, name='estudiantes'),
     path('formulario-estudiantes/',formulario_estudiantes, name= 'formulario_estudiantes'),
@@ -42,5 +43,6 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('editar-perfil', ProfileUpdateView.as_view(), name='editar_perfil'),
+    path('agregar-avatar/',agregar_avatar,name='agregar_avatar')
     
 ]

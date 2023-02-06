@@ -26,21 +26,34 @@
                 <a class="navbar-brand" href="{% url 'profesores' %}">Profesores</a>
                 <a class="navbar-brand" href="{% url 'carreras' %}">Carreras</a>
                 <a class="navbar-brand" href="{% url 'tareas' %}">Tareas</a> 
+                <a class="navbar-brand "href="{% url 'about' %}">About</a>
                 <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-                {% if user.is_authenticated %}
+                {% if request.user.is_authenticated %}
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="simpleDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ user.username }}
+                        <div style="display: inline-flex; padding: 0px 20px 0px 10px;">
+                            <img src="{{ user.avatar.imagen.url }}" style="width: 50px;"/>
+                        </div>
+                        
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                      <a class="dropdown-item" href="{% url 'editar_perfil' %}">Editar datos</a>
-                      <a class="dropdown-item" href="">Agregar Avatar</a>
-                      <a class="dropdown-item" href="{% url 'logout' %}"><strong>Logout</strong></a>
-                    </div>
-                  </div>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'editar_perfil' %}" class="dropdown-item">Editar datos</a></li>
+                        <li><a href="{% url 'agregar_avatar' %}" class="dropdown-item">Agregar Avatar</a></li>
+                        <li><a href="{% url 'logout' %}" class="dropdown-item">Logout</a></li>
+                    </ul>
+                </div>
                 {% else %}
-                    <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
-                    <a class="btn btn-primary" href="{% url 'registro' %}">REGISTRO</a>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="simpleDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Comenzar
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'login' %}" class="dropdown-item">Login</a></li>
+                        <li><a href="{% url 'registro' %}" class="dropdown-item">REGISTRO</a></li>
+                    </ul>
+                </div>
+                    
                 {% endif %}
                 
             </div>
@@ -56,12 +69,10 @@
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">Ayuda</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Contacto</a></li>
+                            <li class="list-inline-item"><a href="#!">Acerca de</a></li>
                       
                         </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; Curso de Python - CoderHouse.</p>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Caleb Salazar.</p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
@@ -81,6 +92,15 @@
             </div>
         </footer>
 
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'js/scripts.js' %}"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     
     </body>
 </html>

@@ -19,6 +19,8 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request,'index.html')
 
+def about(request):
+    return render(request, 'about.html')
 
 # Estudiantes
 
@@ -371,4 +373,14 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
 
-    
+def agregar_avatar(request):
+    if request.method == "POST":
+        formulario = AvatarFormulario(request.POST, request.FILES)
+        if formulario.is_valid():
+            avatar = formulario.save()
+            avatar.user = request.user
+            avatar.save()
+            return redirect(reverse('home'))
+    else:
+        formulario = AvatarFormulario()
+    return render(request,'myapp/formulario_avatar.html',{'formulario': formulario},)

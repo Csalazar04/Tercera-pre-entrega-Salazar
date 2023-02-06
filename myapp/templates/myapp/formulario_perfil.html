@@ -2,7 +2,8 @@
 
 {% block content %}
 
-<h3>Su username es: {{ object.username }}</h3>
+<b>Su username es: {{ object.username }}</b>
+<h3>Editar datos:</h3>
 <form method="post">
     {% csrf_token %}
     {{form.as_p}}
