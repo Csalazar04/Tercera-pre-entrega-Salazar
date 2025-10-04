@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <style>
+        .read-more {color: #00f;}
+
+        .bg-success-custom {background-color: #98dea7 !important;}
+
+        .bg-danger {background-color: #f28484 !important;}
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <!-- https://datatables.net/download/index with jQuery, DataTables, Buttons, SearchPanes, and Select //-->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.10.25/b-1.7.1/sp-1.4.0/sl-1.3.3/datatables.min.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <style>
+        .show-read-more .more-text {display: none;}
+
+        .dataTable {font-size: 14px;}
+
+        .container-fluid {font-size: 14px;}
+
+        .float-left { float: left !important; max-width: 100%; }
+    </style>
+    <title>Prowler - The Handy Cloud Security Tool</title>
+    </head>
+    <body>
+    <div class="container-fluid">
+        <div class="row mt-3">
+        <div class="col-md-4">
+            <a href="https://github.com/prowler-cloud/prowler/"><img class="float-left card-img-left mt-4 mr-4 ml-4"
+                        src=https://prowler.com/wp-content/uploads/logo-html.png
+                        alt="prowler-logo"
+                        style="width: 15rem; height:auto;"/></a>
+            <div class="card">
+            <div class="card-header">
+                Report Information
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-auto">
+                    <b>Version:</b> 5.12.3
+                    </div>
+                </div>
+                </li>
+                <li class="list-group-item">
+                <b>Parameters used:</b> 
+                </li>
+                <li class="list-group-item">
+                <b>Date:</b> 2025-10-01T09:58:12.367146
+                </li>
+            </ul>
+            </div>
+        </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-header">
+                            GitHub Assessment Summary
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            
+                            <li class="list-group-item">
+                                <b>GitHub account:</b> Csalazar04
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            GitHub Credentials
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            
+                            <li class="list-group-item">
+                                <b>GitHub authentication method:</b> Personal Access Token
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            <div class="col-md-2">
+            <div class="card">
+                <div class="card-header">
+                    Assessment Overview
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <b>Total Findings:</b> 16
+                    </li>
+                    <li class="list-group-item">
+                        <b>Passed:</b> 0
+                    </li>
+                    <li class="list-group-item">
+                        <b>Passed (Muted):</b> 0
+                    </li>
+                    <li class="list-group-item">
+                        <b>Failed:</b> 16
+                    </li>
+                    <li class="list-group-item">
+                        <b>Failed (Muted):</b> 0
+                    </li>
+                    <li class="list-group-item">
+                        <b>Total Resources:</b> 1
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="row-mt-3">
+        <div class="col-md-12">
+            <table class="table compact stripe row-border ordering" id="findingsTable" data-order='[[ 5, "asc" ]]' data-page-length='100'>
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Status</th>
+                    <th scope="col">Severity</th>
+                    <th scope="col">Service Name</th>
+                    <th scope="col">Region</th>
+                    <th style="width:20%" scope="col">Check ID</th>
+                    <th style="width:20%" scope="col">Check Title</th>
+                    <th scope="col">Resource ID</th>
+                    <th scope="col">Resource Tags</th>
+                    <th scope="col">Status Extended</th>
+                    <th scope="col">Risk</th>
+                    <th scope="col">Recommendation</th>
+                    <th scope="col">Compliance</th>
+                </tr>
+            </thead>
+            <tbody>
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>medium</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_branch<wbr />_delete<wbr />_on<wbr />_merge<wbr />_enabled</td>
+                            <td>Check if a repository deletes the branch after merging</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not delete branches on merge in default branch (main).</td>
+                            <td><p class="show-read-more">Inactive branches pose a security risk as they can accumulate outdated code, dependencies, and potential vulnerabilities over time. Malicious actors may exploit these branches, and they can clutter the repository, making it harder to manage and track the active code. Additionally, stale branches may unintentionally be accessed or used inappropriately, leading to potential security breaches.</p></td>
+                            <td><p class="show-read-more">Regularly review and remove inactive branches from your repositories. This helps reduce the risk of malicious code injection, sensitive data leaks, and unnecessary clutter in the repository. By keeping branches active and up to date, you ensure that your codebase remains secure and manageable.</p> <a class="read-more" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-the-automatic-deletion-of-branches"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.8
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>high</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_default<wbr />_branch<wbr />_deletion<wbr />_disabled</td>
+                            <td>Check if a repository denies default branch deletion</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does allow default branch deletion.</td>
+                            <td><p class="show-read-more">Allowing the deletion of protected branches by users with push access increases the risk of accidental or intentional branch removal, potentially resulting in significant data loss or disruption to the development process.</p></td>
+                            <td><p class="show-read-more">Deny the ability to delete protected branches to ensure the preservation of critical branch data. This prevents accidental or malicious deletions and helps maintain the integrity and stability of the repository.</p> <a class="read-more" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.17
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>high</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_default<wbr />_branch<wbr />_disallows<wbr />_force<wbr />_push</td>
+                            <td>Check if repository denies force push</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does allow force pushes on default branch (main).</td>
+                            <td><p class="show-read-more">Permitting force pushes to branches can lead to accidental or intentional overwrites of the commit history, resulting in potential data loss, code inconsistencies, or the introduction of malicious changes. This compromises the stability and security of the repository.</p></td>
+                            <td><p class="show-read-more">Disable force pushes on protected branches to preserve the commit history and ensure the integrity of the repository. This measure helps prevent unintentional data loss and protects the repository from malicious changes.</p> <a class="read-more" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.16
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>high</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_default<wbr />_branch<wbr />_protection<wbr />_applies<wbr />_to<wbr />_admins</td>
+                            <td>Check if repository enforces admin branch protection</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not enforce administrators to be subject to the same branch protection rules as other users.</td>
+                            <td><p class="show-read-more">Excluding administrators from branch protection rules introduces a significant risk of unauthorized or unreviewed changes being pushed to protected branches. This can lead to vulnerabilities, including the potential insertion of malicious code, especially if an administrator account is compromised.</p></td>
+                            <td><p class="show-read-more">Enforce branch protection rules for administrators to ensure they adhere to the same security and quality standards as other users. This mitigates the risk of unreviewed or untrusted code being introduced, enhancing the overall integrity of the codebase.</p> <a class="read-more" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.14
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>critical</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_default<wbr />_branch<wbr />_protection<wbr />_enabled</td>
+                            <td>Check if branch protection is enforced on the default branch </td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not enforce branch protection on default branch (main).</td>
+                            <td><p class="show-read-more">The absence of branch protection on the default branch increases the risk of unauthorized, unreviewed, or untested changes being merged. This can compromise the stability, security, and reliability of the codebase, which is especially critical for production deployments.</p></td>
+                            <td><p class="show-read-more">Apply branch protection rules to the default branch to ensure it is safeguarded against unauthorized or improper modifications. This helps maintain code quality, enforces proper review and testing procedures, and reduces the risk of accidental or malicious changes.</p> <a class="read-more" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule#creating-a-branch-protection-rule"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.20
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>high</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_default<wbr />_branch<wbr />_requires<wbr />_codeowners<wbr />_review</td>
+                            <td>Check if code owner approval is required for changes to owned code</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not require code owner approval for changes to owned code.</td>
+                            <td><p class="show-read-more">If code owner approval is not required, unauthorized or unqualified individuals may merge changes to sensitive or critical areas of the codebase, increasing the risk of security vulnerabilities, bugs, or malicious modifications.</p></td>
+                            <td><p class="show-read-more">To require code owner review, navigate to the repository settings, click on &#x27;Branches&#x27;, add or edit a branch protection rule, and enable &#x27;Require review from Code Owners&#x27;.</p> <a class="read-more" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-review-from-code-owners"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.7
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>medium</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_default<wbr />_branch<wbr />_requires<wbr />_conversation<wbr />_resolution</td>
+                            <td>Check if repository requires conversation resolution before merging</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not require conversation resolution on default branch (main).</td>
+                            <td><p class="show-read-more">Leaving comments unresolved before merging code can lead to overlooked issues, including potential bugs or security vulnerabilities, that might affect the quality and security of the codebase. Unaddressed concerns could result in a lower quality of code, increasing the risk of production failures or breaches.</p></td>
+                            <td><p class="show-read-more">Ensure that all comments in a code change proposal are resolved before merging. This guarantees that every reviewer’s concern is addressed, improving code quality and security by preventing issues from being ignored or overlooked.</p> <a class="read-more" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.11
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>medium</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_default<wbr />_branch<wbr />_requires<wbr />_linear<wbr />_history</td>
+                            <td>Check if repository default branch requires linear history</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not require linear history on default branch (main).</td>
+                            <td><p class="show-read-more">Allowing non-linear history can result in a cluttered and difficult-to-trace Git history, making it harder to identify specific changes, debug issues, and understand the sequence of development. This increases the risk of errors, inconsistencies, and bugs, especially in production environments.</p></td>
+                            <td><p class="show-read-more">Enforce a linear history by requiring rebase or squash merges for pull requests. This will create a clean, chronological commit history, making it easier to track changes, revert modifications, and troubleshoot any issues that arise.</p> <a class="read-more" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.13
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>high</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_default<wbr />_branch<wbr />_requires<wbr />_multiple<wbr />_approvals</td>
+                            <td>Check if repositories require at least 2 code changes approvals</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not enforce at least 2 approvals for code changes.</td>
+                            <td><p class="show-read-more">If repositories do not require at least 2 code changes approvals before merging a pull request, it is possible that code changes are not being reviewed by multiple people, which could lead to the introduction of bugs or security vulnerabilities.</p></td>
+                            <td><p class="show-read-more">To require at least 2 code changes approvals before merging a pull request, navigate to the repository settings, click on &#x27;Branches&#x27;, and then &#x27;Add rule&#x27;.</p> <a class="read-more" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-pull-request-reviews-before-merging"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.3
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>medium</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_default<wbr />_branch<wbr />_requires<wbr />_signed<wbr />_commits</td>
+                            <td>Check if repository requires signed commits</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not require signed commits on default branch (main).</td>
+                            <td><p class="show-read-more">If repositories do not require signed commits, there is no way to verify the authenticity and integrity of code changes. This could allow malicious actors to impersonate legitimate contributors and introduce unauthorized or harmful changes to the codebase.</p></td>
+                            <td><p class="show-read-more">Enable the &#x27;Require signed commits&#x27; option in branch protection rules to ensure that all commits are cryptographically signed and verified before they can be merged.</p> <a class="read-more" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-signed-commits"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.12
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>high</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_default<wbr />_branch<wbr />_status<wbr />_checks<wbr />_required</td>
+                            <td>Check if repository enforces status checks to pass</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not enforce status checks.</td>
+                            <td><p class="show-read-more">Merging code without requiring all checks to pass increases the risk of introducing bugs, vulnerabilities, or unstable changes into the codebase. This can compromise the quality, security, and functionality of the application.</p></td>
+                            <td><p class="show-read-more">Require all predefined status checks to pass successfully before allowing code changes to be merged. This ensures that all quality, stability, and security conditions are met, reducing the likelihood of errors or vulnerabilities being introduced into the project.</p> <a class="read-more" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.9
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>high</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_dependency<wbr />_scanning<wbr />_enabled</td>
+                            <td>Check if package vulnerability scanning is enabled for dependencies in the repository</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not have package vulnerability scanning (Dependabot alerts) enabled.</td>
+                            <td><p class="show-read-more">If package vulnerability scanning is not enabled, known vulnerabilities in dependencies may go undetected, increasing the risk of exploitation and security breaches.</p></td>
+                            <td><p class="show-read-more">Enable Dependabot alerts or another package vulnerability scanner in the repository settings to automatically detect and alert on vulnerable dependencies.</p> <a class="read-more" href="https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.5.5
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>high</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_has<wbr />_codeowners<wbr />_file</td>
+                            <td>Check if repositories have a CODEOWNERS file</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not have a CODEOWNERS file.</td>
+                            <td><p class="show-read-more">Not having a CODEOWNERS file in a repository may lead to unclear code ownership and review responsibilities, increasing the risk of unreviewed or unauthorized changes.</p></td>
+                            <td><p class="show-read-more">Add a CODEOWNERS file to the root, .github/, or docs/ directory of the repository. The file should specify code owners for files and directories as appropriate for your organization.</p> <a class="read-more" href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.6
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>medium</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_inactive<wbr />_not<wbr />_archived</td>
+                            <td>Check for inactive repositories that are not archived</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar has been inactive for 970 days and is not archived (threshold: 180 days).</td>
+                            <td><p class="show-read-more">Inactive repositories that are not archived may contain outdated dependencies, unpatched vulnerabilities, or misconfigured security settings. These repositories increase the attack surface and could be targeted by malicious actors.</p></td>
+                            <td><p class="show-read-more">Review inactive repositories and either: 1) Archive them if they are no longer needed, 2) Update their dependencies and security configurations if they are still required, or 3) Delete them if they contain no valuable information.</p> <a class="read-more" href="https://docs.github.com/en/repositories/archiving-a-github-repository/archiving-repositories"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.1.8
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>low</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_public<wbr />_has<wbr />_securitymd<wbr />_file</td>
+                            <td>Check if public repositories have a SECURITY.md file</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not have a SECURITY.md file.</td>
+                            <td><p class="show-read-more">Not having a SECURITY.md file in a public repository may lead to security vulnerabilities being overlooked by users and contributors.</p></td>
+                            <td><p class="show-read-more">Add a SECURITY.md file to the root of the repository. The file should contain information on how to report a security vulnerability, the security policy of the repository, and any other relevant information.</p> <a class="read-more" href="https://github.blog/changelog/2019-05-23-security-policy/"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.2.1
+</p></td>
+                        </tr>
+                        
+                        <tr class="table-danger">
+                            <td>FAIL</td>
+                            <td>high</td>
+                            <td>repository</td>
+                            <td>csalazar04</td>
+                            <td>repository<wbr />_secret<wbr />_scanning<wbr />_enabled</td>
+                            <td>Check if secret scanning is enabled to detect sensitive data in the repository</td>
+                            <td>591159477</td>
+                            <td></td>
+                            <td>Repository Tercera-pre-entrega-Salazar does not have secret scanning enabled to detect sensitive data.</td>
+                            <td><p class="show-read-more">If secret scanning is not enabled, sensitive data may be inadvertently committed to the repository, increasing the risk of data breaches and exploitation by attackers.</p></td>
+                            <td><p class="show-read-more">Enable secret scanning in the repository settings to automatically detect and prevent sensitive data from being committed to the codebase.</p> <a class="read-more" href="https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning"><i class="fas fa-external-link-alt"></i></a></td>
+                            <td><p class="show-read-more">
+&#x2022;CIS-1.0: 1.5.1
+</p></td>
+                        </tr>
+                        
+            </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Table search and paginator -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
+        integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd"
+        crossorigin="anonymous"></script>
+    <!-- https://datatables.net/download/index with jQuery, DataTables, Buttons, SearchPanes, and Select //-->
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.10.25/b-1.7.1/sp-1.4.0/sl-1.3.3/datatables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Initialise the table with 50 rows, and some search/filtering panes
+            $('#findingsTable').DataTable({
+                responsive: true,
+                // Show 25, 50, 100 and All records
+                lengthChange: true,
+                lengthMenu: [[25, 50, 100, -1], [25, 50, 100, "All"]],
+                searchPanes: {
+                    cascadePanes: true,
+                    viewTotal: true,
+                },
+                dom: 'Blfrtip',
+                language: {
+                    // To enable a filter button instead of the filter row
+                    searchPanes: {
+                        clearMessage: 'Clear Filters',
+                        collapse: { 0: 'Filters', _: 'Filters (%d)' },
+                        initCollapsed: true
+
+                    }
+                },
+                buttons: [
+                    {
+                        extend: 'searchPanes',
+                        config: {
+                            cascadePanes: true,
+                            viewTotal: true,
+                            orderable: false
+                        }
+                    }
+                ],
+                columnDefs: [
+                    {
+                        searchPanes: {
+                            show: true,
+                            pagingType: 'numbers',
+                            searching: true
+                        },
+                        // Show all filters
+                        targets: [0, 1, 2, 3, 5, 7]
+                    }
+                ]
+            });
+            var maxLength = 30;
+            // ReadMore ReadLess
+            $(".show-read-more").each(function () {
+                var myStr = $(this).text();
+                if ($.trim(myStr).length > maxLength) {
+                    var newStr = myStr.substring(0, maxLength);
+                    var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+                    $(this).empty().html(newStr);
+                    $(this).append(' <a href="javascript:void(0);" class="read-more">read more...</a>');
+                    $(this).append('<span class="more-text">' + removedStr + '</span>');
+                }
+            });
+            $(".read-more").click(function () {
+                $(this).siblings(".more-text").contents().unwrap();
+                $(this).remove();
+            });
+        });
+    </script>
+</body>
+
+</html>
